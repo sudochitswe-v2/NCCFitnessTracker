@@ -8,8 +8,15 @@ namespace FitnessTracker.Desktop
 {
     public static partial class Constant
     {
+        public enum FormMode
+        {
+            NEW, EDIT
+        }
         public static class AppMessage
         {
+            public const string SAVE_SUCCES = "Save success.";
+            public const string UPDATE_SUCCES = "Update success.";
+            public const string ERROR_WHILE_SAVING = "Error while saving.";
             public const string INVALID_USER_ID = "Invalid User ID";
             public const string INVALID_PASSWORD = "Invalid Password";
             public const string FATAL_THREAD_EXCEPTION_MESSAGE = "Fatal exception";
@@ -17,7 +24,8 @@ namespace FitnessTracker.Desktop
             public const string UNHANDLE_THREAD_EXCEPTION = "Unhadled thread exception";
             public const string UNHANDLE_WINFORM_EXCEPTION = "Unhadled application exception";
             public const string REGISTRATION_SUCCESS = "Registration success.";
-            public const string REGISTRATION_UNSUCCESS= "Registration doesn't complete.";
+            public const string REGISTRATION_UNSUCCESS = "Registration doesn't complete.";
+            public const string DUPLICATE_EMAIL = "This email is already exist.";
         }
         public static class RoleName
         {

@@ -40,15 +40,15 @@ namespace FitnessTracker.Desktop.Forms
                 ModifiedBy = txtUserID.Text,
                 ModifiedOn = DateTime.Now
             };
-            var isSaved = _userUseCase.Register(user);
-            if (isSaved)
+            var result = _userUseCase.Register(user);
+            if (result.Success)
             {
-                CustomMessageBoxUtil.Information(AppMessage.REGISTRATION_SUCCESS);
+                CustomMessageBoxUtil.Information(result.Message);
                 this.Close();
             }
             else
             {
-                CustomMessageBoxUtil.Warning(AppMessage.REGISTRATION_UNSUCCESS);
+                CustomMessageBoxUtil.Warning(result.Message);
             }
         }
         private void FrmUserRegister_Load(object sender, EventArgs e) => GenerateID();

@@ -46,7 +46,6 @@ namespace FitnessTracker.Desktop.Data.Repository
 
             return _dbClient.QueryFirstOrDefault<UserDetail>(sql, parameters);
         }
-
         public UserProfile GetUserProrile(Guid ID)
         {
             var sql = @"SELECT TOP 1 
@@ -67,11 +66,43 @@ namespace FitnessTracker.Desktop.Data.Repository
             };
             return _dbClient.QueryFirstOrDefault<UserProfile>(sql, paramters);
         }
-
         public IEnumerable<Role> GetRoles()
         {
             var sql = "SELECT TOP 10 * FROM tb_Role";
             return _dbClient.Query<Role>(sql);
+        }
+        public int CreateUserProfile(UserProfile profile)
+        {
+            var properties = profile.GetType().GetProperties();
+            var parameters = new List<SqlParameter>();
+            foreach (var property in properties)
+            {
+                parameters.Add(new SqlParameter($"@{property.Name}", property.GetValue(profile)));
+            }
+            var cols = properties.Select(prop => prop.Name);
+            var columns = string.Join(",", cols);
+            var values = string.Join(",", cols.Select(col => $"@{col}"));
+            var sql = $"INSERT INTO tb_UserProfile ({columns}) VALUES ({values});";
+            return _dbClient.Execute(sql, parameters);
+        }
+
+        public int UpdateUserProfile(UserProfile profile)
+        {
+            var whereParam = nameof(UserProfile.UserID);
+            var properties = profile.GetType().GetProperties().Where(prop => prop.Name != nameof(UserProfile.UserID));
+            var parameters = new List<SqlParameter>
+            {
+                new SqlParameter($"@{whereParam}", profile.UserID)
+            };
+            foreach (var property in properties)
+            {
+                parameters.Add(new SqlParameter($"@{property.Name}", property.GetValue(profile)));
+            }
+            var cols = properties.Select(prop => prop.Name);
+
+            var values = string.Join(",", cols.Select(col => $"{col}=@{col}"));
+            var sql = $"UPDATE tb_UserProfile SET {values} WHERE {whereParam}=@{whereParam};";
+            return _dbClient.Execute(sql, parameters);
         }
     }
 }

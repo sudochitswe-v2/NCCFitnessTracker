@@ -67,7 +67,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.lblDontHaveAcount);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.splitContainer1.Size = new System.Drawing.Size(379, 380);
+            this.splitContainer1.Size = new System.Drawing.Size(330, 380);
             this.splitContainer1.SplitterDistance = 79;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -76,9 +76,9 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Transparent;
-            this.label4.Location = new System.Drawing.Point(40, 47);
+            this.label4.Location = new System.Drawing.Point(12, 47);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(327, 25);
+            this.label4.Size = new System.Drawing.Size(306, 25);
             this.label4.TabIndex = 1;
             this.label4.Text = "Let\'s burn your calories with us";
             // 
@@ -86,7 +86,7 @@
             // 
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(106, 9);
+            this.label3.Location = new System.Drawing.Point(91, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(182, 38);
             this.label3.TabIndex = 0;
@@ -98,7 +98,7 @@
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.btnExit.Image = global::FitnessTracker.Desktop.Properties.Resources.exit_x32;
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExit.Location = new System.Drawing.Point(255, 248);
+            this.btnExit.Location = new System.Drawing.Point(206, 247);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(112, 38);
             this.btnExit.TabIndex = 8;
@@ -112,7 +112,7 @@
             this.lblDontHaveAcount.BackColor = System.Drawing.SystemColors.Control;
             this.lblDontHaveAcount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDontHaveAcount.ForeColor = System.Drawing.Color.Blue;
-            this.lblDontHaveAcount.Location = new System.Drawing.Point(60, 258);
+            this.lblDontHaveAcount.Location = new System.Drawing.Point(12, 257);
             this.lblDontHaveAcount.Name = "lblDontHaveAcount";
             this.lblDontHaveAcount.Size = new System.Drawing.Size(158, 17);
             this.lblDontHaveAcount.TabIndex = 6;
@@ -126,9 +126,9 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtPassword);
             this.groupBox1.Controls.Add(this.txtEmail);
-            this.groupBox1.Location = new System.Drawing.Point(63, 12);
+            this.groupBox1.Location = new System.Drawing.Point(37, 14);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(251, 224);
+            this.groupBox1.Size = new System.Drawing.Size(251, 214);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             // 
@@ -184,9 +184,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 380);
+            this.ClientSize = new System.Drawing.Size(330, 380);
             this.Controls.Add(this.splitContainer1);
+            this.MinimumSize = new System.Drawing.Size(346, 419);
             this.Name = "FrmLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

@@ -1,19 +1,12 @@
-﻿using FitnessTracker.Desktop.Identity;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using FitnessTracker.Desktop.Identity;
 using System.Windows.Forms;
 
 namespace FitnessTracker.Desktop.Forms
 {
-    public partial class FrmDashBorad : Form
+    public partial class FrmUserDashBorad : Form
     {
-        public FrmDashBorad()
+        public FrmUserDashBorad()
         {
             InitializeComponent();
         }

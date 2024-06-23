@@ -7,6 +7,8 @@ using FitnessTracker.Desktop.Forms;
 using FitnessTracker.Desktop.Domain.Models;
 using FitnessTracker.Desktop.Identity;
 using FitnessTracker.Desktop.Data.Usecase;
+using FitnessTracker.Desktop.Data.Dto;
+using FitnessTracker.Desktop.Presentation.Forms;
 
 namespace FitnessTracker.Desktop
 {
@@ -18,12 +20,14 @@ namespace FitnessTracker.Desktop
         public FrmLogin(UserUseCase userUseCase)
         {
             _userUseCase = userUseCase;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             InitializeComponent();
         }
         private void TryLogin()
         {
             var result = _userUseCase.Login(txtEmail.Text, txtPassword.Text);
-            if (!result.Status)
+            if (!result.Success)
             {
                 _failCount++;
                 var message = $"{result.Message} \n Fail attempt {_failCount}. \n App will be close after {_failAttemptLimit - _failCount}";
@@ -31,11 +35,27 @@ namespace FitnessTracker.Desktop
             }
             if (IsLoginAttemptExceedHandle()) return;
             UserIdentity.Instance.Init(result.Data);
-            var dashBorad = App.MyServiceProvider.GetService<FrmDashBorad>();
+            CheckUserProfile(result.Data);
+            ShowDashBoard();
+        }
+
+        private void ShowDashBoard()
+        {
+            var dashBorad = App.MyServiceProvider.GetService<FrmUserDashBorad>();
             CommonUtil.ShowForm(dashBorad);
             dashBorad.Activate();
             this.Hide();
         }
+
+        private void CheckUserProfile(UserDetail userDetail)
+        {
+            var profile = userDetail.Profile;
+            if (profile is null)
+            {
+                CommonUtil.ShowDialogForm(App.MyServiceProvider.GetService<FrmUserProfile>());
+            }
+        }
+
         private bool IsLoginAttemptExceedHandle()
         {
             if (_failCount > _failAttemptLimit)
@@ -44,6 +64,7 @@ namespace FitnessTracker.Desktop
             }
             return false;
         }
+
         private void btnExit_Click(object sender, EventArgs e) => Application.Exit();
 
         private void btnLogin_Click(object sender, EventArgs e) => TryLogin();

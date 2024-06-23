@@ -11,6 +11,7 @@ using FitnessTracker.Desktop.Data.SqlClient;
 using FitnessTracker.Desktop.Domain.Interface;
 using FitnessTracker.Desktop.Data.Repository;
 using FitnessTracker.Desktop.Data.Usecase;
+using FitnessTracker.Desktop.Presentation.Forms;
 
 namespace FitnessTracker.Desktop
 {
@@ -74,9 +75,11 @@ namespace FitnessTracker.Desktop
                      services.AddSingleton<DbClient>();
                      services.AddScoped<IUserRepository, UserRepository>();
                      services.AddScoped<UserUseCase>();
+                     // add forms
                      services.AddTransient<FrmLogin>();
-                     services.AddTransient<FrmDashBorad>();
+                     services.AddTransient<FrmUserDashBorad>();
                      services.AddTransient<FrmUserRegister>();
+                     services.AddTransient<FrmUserProfile>();
                  });
         }
         private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)

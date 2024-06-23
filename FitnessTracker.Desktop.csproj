@@ -165,10 +165,25 @@
   <ItemGroup>
     <Compile Include="Data\Dto\Result.cs" />
     <Compile Include="Data\Dto\UserDetail.cs" />
+    <Compile Include="Data\Repository\ActivityRepository.cs" />
+    <Compile Include="Data\Usecase\ActivityUseCase.cs" />
+    <Compile Include="Domain\Repository\IActivityRepository.cs" />
     <Compile Include="Data\Usecase\UserUseCase.cs" />
     <Compile Include="Domain\Model\Activity.cs" />
     <Compile Include="Domain\Model\Role.cs" />
     <Compile Include="Domain\Model\UserProfile.cs" />
+    <Compile Include="Presentation\Forms\FrmAdminDashBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\FrmAdminDashBoard.Designer.cs">
+      <DependentUpon>FrmAdminDashBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\FrmUserProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\FrmUserProfile.Designer.cs">
+      <DependentUpon>FrmUserProfile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Util\CommonUtil.cs" />
     <Compile Include="Constant.cs" />
     <Compile Include="Data\DataContext.cs" />
@@ -178,11 +193,11 @@
     <Compile Include="Domain\Model\BaseModel.cs" />
     <Compile Include="Domain\Model\Goal.cs" />
     <Compile Include="Domain\Model\User.cs" />
-    <Compile Include="Presentation\Forms\FrmDashBorad.cs">
+    <Compile Include="Presentation\Forms\FrmUserDashBorad.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation\Forms\FrmDashBorad.Designer.cs">
-      <DependentUpon>FrmDashBorad.cs</DependentUpon>
+    <Compile Include="Presentation\Forms\FrmUserDashBorad.Designer.cs">
+      <DependentUpon>FrmUserDashBorad.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentation\Forms\FrmUserRegister.cs">
       <SubType>Form</SubType>
@@ -201,8 +216,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\CustomMessageBoxUtil.cs" />
     <Compile Include="Util\FormatUtil.cs" />
-    <EmbeddedResource Include="Presentation\Forms\FrmDashBorad.resx">
-      <DependentUpon>FrmDashBorad.cs</DependentUpon>
+    <EmbeddedResource Include="Presentation\Forms\FrmAdminDashBoard.resx">
+      <DependentUpon>FrmAdminDashBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\FrmUserDashBorad.resx">
+      <DependentUpon>FrmUserDashBorad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\FrmUserProfile.resx">
+      <DependentUpon>FrmUserProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Forms\FrmUserRegister.resx">
       <DependentUpon>FrmUserRegister.cs</DependentUpon>

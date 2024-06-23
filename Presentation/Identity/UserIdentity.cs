@@ -16,11 +16,13 @@ namespace FitnessTracker.Desktop.Identity
         public Guid Id { get; private set; }
         public string Name { get; private set; }
         public string Email { get; private set; }
+        public string Role { get; private set; }
         public void Init(UserDetail user)
         {
             this.Id = user.ID;
             this.Name = user.FullName;
-            this.Email =user.Email;
+            this.Email = user.Email;
+            this.Role = user.Role.RoleName;
         }
         public static UserIdentity Instance
         {

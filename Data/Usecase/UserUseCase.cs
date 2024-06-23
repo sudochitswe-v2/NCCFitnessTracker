@@ -19,26 +19,38 @@ namespace FitnessTracker.Desktop.Data.Usecase
         {
             return _userRepo.GetRoles();
         }
-
+        public Result<object> CheckIsEmailDuplicate(string email)
+        {
+            var result = new Result<object>();
+            var user = _userRepo.GetUserByEmail(email);
+            if (user is null)
+                result.Success = true;
+            else
+            {
+                result.Success = false;
+                result.Message = AppMessage.DUPLICATE_EMAIL;
+            }
+            return result;
+        }
         public Result<UserDetail> Login(string email, string password)
         {
             var result = new Result<UserDetail>();
             var user = _userRepo.GetUserByEmail(email);
             if (user is null)
             {
-                result.Status = false;
+                result.Success = false;
                 result.Message = AppMessage.INVALID_USER_ID;
                 return result;
             }
             if (!user.Password.Equals(password))
             {
-                result.Status = false;
+                result.Success = false;
                 result.Message = AppMessage.INVALID_PASSWORD;
                 return result;
             }
             var role = _userRepo.GetRoles().FirstOrDefault(r => r.ID.Equals(user.RoleID));
             var profile = _userRepo.GetUserProrile(user.ID);
-            result.Status = true;
+            result.Success = true;
             result.Data = new UserDetail
             {
                 ID = user.ID,
@@ -52,10 +64,59 @@ namespace FitnessTracker.Desktop.Data.Usecase
             return result;
         }
 
-        public bool Register(User user)
+        public Result<dynamic> Register(User user)
         {
-            var result = _userRepo.RegisterUser(user);
-            return result > 0;
+            var result = new Result<object>();
+            var existingUser = _userRepo.GetUserByEmail(user.Email);
+            if (existingUser != null)
+            {
+                result.Success = false;
+                result.Message = AppMessage.DUPLICATE_EMAIL;
+                return result;
+            }
+            var count = _userRepo.RegisterUser(user);
+            if (count > 0)
+            {
+                result.Success = true;
+                result.Message = AppMessage.REGISTRATION_SUCCESS;
+            }
+            else
+            {
+                result.Success = false;
+                result.Message = AppMessage.REGISTRATION_UNSUCCESS;
+            }
+            return result;
+        }
+        public UserProfile GetUserProfile(Guid Id)
+        {
+            return _userRepo.GetUserProrile(Id);
+        }
+        public Result<dynamic> SaveProfile(UserProfile profile)
+        {
+            var result = new Result<dynamic>();
+            int count;
+            string message;
+            var existingProfile = _userRepo.GetUserProrile(profile.UserID);
+            if (existingProfile != null)
+            {
+                count = _userRepo.UpdateUserProfile(profile);
+                message = AppMessage.UPDATE_SUCCES;
+            }
+            else
+            {
+                count = _userRepo.CreateUserProfile(profile);
+                message = AppMessage.SAVE_SUCCES;
+            }
+            result.Success = count > 0;
+            if (result.Success)
+            {
+                result.Message = message;
+            }
+            else
+            {
+                result.Message=AppMessage.ERROR_WHILE_SAVING;
+            }
+            return result;
         }
     }
 }
