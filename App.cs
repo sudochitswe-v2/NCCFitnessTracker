@@ -5,8 +5,12 @@ using Microsoft.Extensions.Hosting;
 using FitnessTracker.Desktop.Util;
 using System.Threading;
 using FitnessTracker.Desktop.Forms;
-using FitnessTracker.Desktop.Data.Context.DataSetFitnessTrackerTableAdapters;
 using FitnessTracker.Desktop.Common;
+using FitnessTracker.Desktop.Data.Context;
+using FitnessTracker.Desktop.Data.SqlClient;
+using FitnessTracker.Desktop.Domain.Interface;
+using FitnessTracker.Desktop.Data.Repository;
+using FitnessTracker.Desktop.Data.Usecase;
 
 namespace FitnessTracker.Desktop
 {
@@ -48,7 +52,7 @@ namespace FitnessTracker.Desktop
             try
             {
                 var exceptionFromEvent = (Exception)e.ExceptionObject;
-                var message = $"{Constant.Message.UNHANDLE_THREAD_EXCEPTION}\n{exceptionFromEvent.Message}";
+                var message = $"{Constant.AppMessage.UNHANDLE_THREAD_EXCEPTION}\n{exceptionFromEvent.Message}";
                 CustomMessageBoxUtil.Error(message);
             }
             finally
@@ -58,7 +62,7 @@ namespace FitnessTracker.Desktop
         }
 
         /// <summary>
-        /// This method will inject all WinForms that will use
+        /// This method will inject all WinForms requried class
         /// </summary>
         /// <returns></returns>
         static IHostBuilder CreateHostBuiler()
@@ -66,7 +70,10 @@ namespace FitnessTracker.Desktop
             return Host.CreateDefaultBuilder()
                  .ConfigureServices((context, services) =>
                  {
-                     services.AddSingleton<tb_SystemUserTableAdapter>();
+                     services.AddSingleton<DataContext>();
+                     services.AddSingleton<DbClient>();
+                     services.AddScoped<IUserRepository, UserRepository>();
+                     services.AddScoped<UserUseCase>();
                      services.AddTransient<FrmLogin>();
                      services.AddTransient<FrmDashBorad>();
                      services.AddTransient<FrmUserRegister>();
@@ -77,14 +84,14 @@ namespace FitnessTracker.Desktop
             try
             {
                 // handle some hadleable exception
-                var message = $"{Constant.Message.UNHANDLE_WINFORM_EXCEPTION}\n{e.Exception.Message}";
+                var message = $"{Constant.AppMessage.UNHANDLE_WINFORM_EXCEPTION}\n{e.Exception.Message}";
                 CustomMessageBoxUtil.Error(message);
             }
             catch (Exception ex)
             {
                 try
                 {
-                    CustomMessageBoxUtil.Error(Constant.Message.FATAL_UI_THREAD_EXCEPTION_MESSAGE);
+                    CustomMessageBoxUtil.Error(Constant.AppMessage.FATAL_UI_THREAD_EXCEPTION_MESSAGE);
                 }
                 finally
                 {

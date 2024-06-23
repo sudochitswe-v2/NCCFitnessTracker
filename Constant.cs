@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FitnessTracker.Desktop.Common
+namespace FitnessTracker.Desktop
 {
     public static partial class Constant
     {
-        public static class Message
+        public static class AppMessage
         {
             public const string INVALID_USER_ID = "Invalid User ID";
             public const string INVALID_PASSWORD = "Invalid Password";
@@ -16,6 +16,13 @@ namespace FitnessTracker.Desktop.Common
             public const string FATAL_UI_THREAD_EXCEPTION_MESSAGE = "Fatal exception happend inside UIThreadException handler";
             public const string UNHANDLE_THREAD_EXCEPTION = "Unhadled thread exception";
             public const string UNHANDLE_WINFORM_EXCEPTION = "Unhadled application exception";
+            public const string REGISTRATION_SUCCESS = "Registration success.";
+            public const string REGISTRATION_UNSUCCESS= "Registration doesn't complete.";
+        }
+        public static class RoleName
+        {
+            public const string ADMIN = "Admin";
+            public const string USER = "User";
         }
     }
     public static partial class Constant

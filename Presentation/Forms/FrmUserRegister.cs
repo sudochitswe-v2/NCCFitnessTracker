@@ -1,51 +1,38 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using FitnessTracker.Desktop.Common;
-using FitnessTracker.Desktop.Data.Context.DataSetFitnessTrackerTableAdapters;
-using FitnessTracker.Desktop.Domain.Models;
+using FitnessTracker.Desktop.Data.Usecase;
+using FitnessTracker.Desktop.Domain.Model;
 using FitnessTracker.Desktop.Util;
+using static FitnessTracker.Desktop.Constant;
 
 namespace FitnessTracker.Desktop.Forms
 {
     public partial class FrmUserRegister : Form
     {
-        private readonly tb_SystemUserTableAdapter _tb_UserAdapter;
-        public FrmUserRegister(tb_SystemUserTableAdapter tb_UserAdapter)
+        public string FormMode { get; set; }
+        private readonly UserUseCase _userUseCase;
+        private Guid roleId;
+        public FrmUserRegister(UserUseCase userUseCase)
         {
-            _tb_UserAdapter = tb_UserAdapter;
+            _userUseCase = userUseCase;
             InitializeComponent();
         }
 
         private void GenerateID()
         {
-            var lastID = _tb_UserAdapter.GetLastID();
-            if (lastID is null)
-            {
-                var Id = FormatUtil.IntToLeadingZeroString(1, 3, Constant.IdentityPrefix.USER);
-                txtUserID.Text = Id;
-            }
-            else
-            {
-                var newID = int.Parse(lastID.Substring(1));
-                txtUserID.Text = FormatUtil.IntToLeadingZeroString(newID + 1, 3, Constant.IdentityPrefix.USER);
-            }
-        }
-        private void ClearInput()
-        {
-            txtUserID.Text =
-            txtUserName.Text = txtEmail.Text =
-            txtEmail.Text = txtPassword.Text =
-            txtConfirmPassword.Text =
-            string.Empty;
+            var userRole = _userUseCase.GetRoles().First(role => role.RoleName.Equals(FormMode, StringComparison.OrdinalIgnoreCase));
+            roleId = userRole.ID;
+            txtUserID.Text = Guid.NewGuid().ToString();
         }
         private void Register()
         {
             if (!IsDataValid()) return;
             var user = new User
             {
-                UserID = txtUserID.Text,
-                UserName = txtUserName.Text,
+                ID = Guid.Parse(txtUserID.Text),
+                FullName = txtUserName.Text,
+                RoleID = roleId,
                 Email = txtEmail.Text,
                 Password = txtPassword.Text,
                 CreatedBy = txtUserID.Text,
@@ -53,27 +40,20 @@ namespace FitnessTracker.Desktop.Forms
                 ModifiedBy = txtUserID.Text,
                 ModifiedOn = DateTime.Now
             };
-            var row = _tb_UserAdapter.Insert(
-                       user.UserID,
-                       user.UserName,
-                       user.Email,
-                       user.Password,
-                       user.CreatedBy,
-                       user.CreatedOn,
-                       user.ModifiedBy,
-                       user.ModifiedOn
-                );
-            if (row > 0)
+            var isSaved = _userUseCase.Register(user);
+            if (isSaved)
             {
-                CustomMessageBoxUtil.Information("Staff registration success");
+                CustomMessageBoxUtil.Information(AppMessage.REGISTRATION_SUCCESS);
                 this.Close();
             }
             else
             {
-                CustomMessageBoxUtil.Warning("Staff registration doesn't complete");
+                CustomMessageBoxUtil.Warning(AppMessage.REGISTRATION_UNSUCCESS);
             }
         }
         private void FrmUserRegister_Load(object sender, EventArgs e) => GenerateID();
+
+        private void btnRegister_Click(object sender, EventArgs e) => Register();
         private bool IsDataValid()
         {
             if (string.IsNullOrEmpty(txtUserName.Text))
@@ -114,15 +94,13 @@ namespace FitnessTracker.Desktop.Forms
                 txtPassword.Focus();
                 return false;
             }
-            if (!(password.Length >= 8 && password.Length < 16))
+            if (!(password.Length >= 8 && password.Length < 12))
             {
-                CustomMessageBoxUtil.Error("Password must be between 8 to 16 characters ");
+                CustomMessageBoxUtil.Error("Password must be between 8 to 12 characters ");
                 txtPassword.Focus();
                 return false;
             }
             return true;
         }
-
-        private void btnRegister_Click(object sender, EventArgs e) => Register();
     }
 }

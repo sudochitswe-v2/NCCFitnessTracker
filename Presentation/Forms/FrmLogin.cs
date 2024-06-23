@@ -1,43 +1,36 @@
-﻿using FitnessTracker.Desktop.Data.Context.DataSetFitnessTrackerTableAdapters;
-using FitnessTracker.Desktop.Util;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows.Forms;
+using FitnessTracker.Desktop.Util;
 using FitnessTracker.Desktop.Common;
 using FitnessTracker.Desktop.Forms;
 using FitnessTracker.Desktop.Domain.Models;
 using FitnessTracker.Desktop.Identity;
+using FitnessTracker.Desktop.Data.Usecase;
 
 namespace FitnessTracker.Desktop
 {
     public partial class FrmLogin : Form
     {
-        private readonly tb_SystemUserTableAdapter _userAdapter;
         private int _failCount = 0;
         private readonly int _failAttemptLimit = 5;
-        public FrmLogin(tb_SystemUserTableAdapter userAdapter)
+        private readonly UserUseCase _userUseCase;
+        public FrmLogin(UserUseCase userUseCase)
         {
-            _userAdapter = userAdapter;
+            _userUseCase = userUseCase;
             InitializeComponent();
         }
         private void TryLogin()
         {
-            var dt = _userAdapter.GetUserByEmail(txtEmail.Text);
-            if (dt.Rows.Count is 0)
+            var result = _userUseCase.Login(txtEmail.Text, txtPassword.Text);
+            if (!result.Status)
             {
                 _failCount++;
-                var message = $"{Constant.Message.INVALID_USER_ID} \n Fail attempt {_failCount}. \n App will be close after {_failAttemptLimit - _failCount}";
-                CustomMessageBoxUtil.Error(message); return;
-            }
-            var user = CommonUtil.ConvertDataRowToObject<User>(dt.Rows[0]);
-            if (!txtPassword.Text.Equals(user.Password))
-            {
-                _failCount++;
-                var message = $"{Constant.Message.INVALID_USER_ID} \n Fail attempt {_failCount}. \n App will be close after {_failAttemptLimit - _failCount}";
+                var message = $"{result.Message} \n Fail attempt {_failCount}. \n App will be close after {_failAttemptLimit - _failCount}";
                 CustomMessageBoxUtil.Error(message); return;
             }
             if (IsLoginAttemptExceedHandle()) return;
-            UserIdentity.Instance.Init(user);
+            UserIdentity.Instance.Init(result.Data);
             var dashBorad = App.MyServiceProvider.GetService<FrmDashBorad>();
             CommonUtil.ShowForm(dashBorad);
             dashBorad.Activate();

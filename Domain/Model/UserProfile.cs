@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FitnessTracker.Desktop.Data.Repository
+namespace FitnessTracker.Desktop.Domain.Model
 {
-    public class UserRepo
+    public class UserProfile
     {
-        UserRepo()
-        {
-
-        }
+        public int UserID { get; set; }
     }
 }

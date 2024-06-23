@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace FitnessTracker.Desktop.Util
 {
-    public class CustomMessageBoxUtil
+    public static class CustomMessageBoxUtil
     {
         public static void Error(string message, string title = "Error")
         {
