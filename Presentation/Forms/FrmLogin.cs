@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using FitnessTracker.Desktop.Util;
 using FitnessTracker.Desktop.Common;
 using FitnessTracker.Desktop.Forms;
-using FitnessTracker.Desktop.Domain.Models;
+using FitnessTracker.Desktop.Domain.Model;
 using FitnessTracker.Desktop.Identity;
 using FitnessTracker.Desktop.Data.Usecase;
 using FitnessTracker.Desktop.Data.Dto;
@@ -45,7 +45,7 @@ namespace FitnessTracker.Desktop
             if (role.Equals("Admin", StringComparison.OrdinalIgnoreCase))
                 CommonUtil.ShowForm(App.MyServiceProvider.GetService<FrmAdminDashBoard>());
             else
-                CommonUtil.ShowForm(App.MyServiceProvider.GetService<FrmAdminDashBoard>());
+                CommonUtil.ShowForm(App.MyServiceProvider.GetService<FrmUserDashBorad>());
 
             this.Hide();
         }

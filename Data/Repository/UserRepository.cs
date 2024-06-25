@@ -1,10 +1,9 @@
 ﻿using System;
 using FitnessTracker.Desktop.Domain.Interface;
 using System.Data.SqlClient;
-using FitnessTracker.Desktop.Domain.Models;
+using FitnessTracker.Desktop.Domain.Model;
 using FitnessTracker.Desktop.Data.SqlClient;
 using System.Collections.Generic;
-using FitnessTracker.Desktop.Domain.Model;
 using System.Linq;
 using FitnessTracker.Desktop.Data.Dto;
 

@@ -12,6 +12,11 @@ namespace FitnessTracker.Desktop
         {
             NEW, EDIT
         }
+        public static class GoalStatus
+        {
+            public const string COMPLETE = "Complete";
+            public const string INPROGRESS = "InProgess";
+        }
         public static class AppMessage
         {
             public const string SAVE_SUCCES = "Save success.";
@@ -28,6 +33,7 @@ namespace FitnessTracker.Desktop
             public const string REGISTRATION_SUCCESS = "Registration success.";
             public const string REGISTRATION_UNSUCCESS = "Registration doesn't complete.";
             public const string DUPLICATE_EMAIL = "This email is already exist.";
+            public const string GOAL_CANT_BE_ZERO = "Target goal must be grater than zero.";
         }
         public static class RoleName
         {

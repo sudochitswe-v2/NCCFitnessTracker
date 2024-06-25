@@ -194,7 +194,7 @@
             // 
             this.btnSave.BackColor = System.Drawing.Color.Transparent;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.btnSave.Image = global::FitnessTracker.Desktop.Properties.Resources.icons8_login_24;
+            this.btnSave.Image = global::FitnessTracker.Desktop.Properties.Resources.icons8_save_24;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSave.Location = new System.Drawing.Point(138, 250);
             this.btnSave.Name = "btnSave";
@@ -292,7 +292,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.splitContainer1);
             this.Name = "FrmAdminDashBoard";
-            this.Text = "FrmAdminDashBoard";
+            this.Text = "Admin - Dashboard";
             this.Load += new System.EventHandler(this.FrmAdminDashBoard_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

@@ -76,8 +76,10 @@ namespace FitnessTracker.Desktop
                      services.AddSingleton<DbClient>();
                      services.AddScoped<IUserRepository, UserRepository>();
                      services.AddScoped<IActivityRepository, ActivityRepository>();
+                     services.AddScoped<ITrackingRepository, TrackingRepository>();
                      services.AddScoped<UserUseCase>();
                      services.AddScoped<ActivityUseCase>();
+                     services.AddScoped<TrackingUseCase>();
                      // add forms
                      services.AddTransient<FrmLogin>();
                      services.AddTransient<FrmAdminDashBoard>();

@@ -4,13 +4,6 @@ using FitnessTracker.Desktop.Domain.Model;
 using FitnessTracker.Desktop.Identity;
 using FitnessTracker.Desktop.Util;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static FitnessTracker.Desktop.Constant;
 

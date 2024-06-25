@@ -1,5 +1,5 @@
 ﻿using FitnessTracker.Desktop.Data.Dto;
-using FitnessTracker.Desktop.Domain.Models;
+using FitnessTracker.Desktop.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,12 +17,15 @@ namespace FitnessTracker.Desktop.Identity
         public string Name { get; private set; }
         public string Email { get; private set; }
         public string Role { get; private set; }
+        public UserProfile UserProfile { get; private set; }
         public void Init(UserDetail user)
         {
             this.Id = user.ID;
             this.Name = user.FullName;
             this.Email = user.Email;
             this.Role = user.Role.RoleName;
+            this.UserProfile = user.Profile;
+            this.UserProfile = user.Profile;
         }
         public static UserIdentity Instance
         {
