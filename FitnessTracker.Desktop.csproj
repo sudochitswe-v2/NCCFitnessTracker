@@ -255,9 +255,29 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <None Include="Resources\login-x32.png" />
+    <None Include="Resources\icons8-delete-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-admin-settings-male-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-save-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-open-door-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-exit-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-login-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-cancel-24.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

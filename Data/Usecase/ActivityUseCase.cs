@@ -22,8 +22,8 @@ namespace FitnessTracker.Desktop.Data.Usecase
             var result = new Result<dynamic>();
             int count;
             string message;
-            var existingProfile = _activityRepository.GetActivity(activity.ID);
-            if (existingProfile != null)
+            var existing = _activityRepository.GetActivity(activity.ID);
+            if (existing != null)
             {
                 count = _activityRepository.UpdateActvity(activity);
                 message = AppMessage.UPDATE_SUCCES;

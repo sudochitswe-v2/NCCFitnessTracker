@@ -10,7 +10,7 @@ namespace FitnessTracker.Desktop.Forms
 {
     public partial class FrmUserRegister : Form
     {
-        public string FormMode { get; set; }
+        public string FormMode { get; set; } = "User";
         private readonly UserUseCase _userUseCase;
         private Guid roleId;
         public FrmUserRegister(UserUseCase userUseCase)
@@ -21,23 +21,23 @@ namespace FitnessTracker.Desktop.Forms
 
         private void GenerateID()
         {
+            this.Text = $"Register as {this.FormMode}";
             var userRole = _userUseCase.GetRoles().First(role => role.RoleName.Equals(FormMode, StringComparison.OrdinalIgnoreCase));
             roleId = userRole.ID;
-            txtUserID.Text = Guid.NewGuid().ToString();
         }
         private void Register()
         {
             if (!IsDataValid()) return;
             var user = new User
             {
-                ID = Guid.Parse(txtUserID.Text),
+                ID = Guid.NewGuid(),
                 FullName = txtUserName.Text,
                 RoleID = roleId,
                 Email = txtEmail.Text,
                 Password = txtPassword.Text,
-                CreatedBy = txtUserID.Text,
+                CreatedBy = txtUserName.Text,
                 CreatedOn = DateTime.Now,
-                ModifiedBy = txtUserID.Text,
+                ModifiedBy = txtUserName.Text,
                 ModifiedOn = DateTime.Now
             };
             var result = _userUseCase.Register(user);
@@ -102,5 +102,6 @@ namespace FitnessTracker.Desktop.Forms
             }
             return true;
         }
+
     }
 }

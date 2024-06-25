@@ -12,6 +12,7 @@ using FitnessTracker.Desktop.Domain.Interface;
 using FitnessTracker.Desktop.Data.Repository;
 using FitnessTracker.Desktop.Data.Usecase;
 using FitnessTracker.Desktop.Presentation.Forms;
+using FitnessTracker.Desktop.Domain.Repository;
 
 namespace FitnessTracker.Desktop
 {
@@ -74,9 +75,12 @@ namespace FitnessTracker.Desktop
                      services.AddSingleton<DataContext>();
                      services.AddSingleton<DbClient>();
                      services.AddScoped<IUserRepository, UserRepository>();
+                     services.AddScoped<IActivityRepository, ActivityRepository>();
                      services.AddScoped<UserUseCase>();
+                     services.AddScoped<ActivityUseCase>();
                      // add forms
                      services.AddTransient<FrmLogin>();
+                     services.AddTransient<FrmAdminDashBoard>();
                      services.AddTransient<FrmUserDashBorad>();
                      services.AddTransient<FrmUserRegister>();
                      services.AddTransient<FrmUserProfile>();

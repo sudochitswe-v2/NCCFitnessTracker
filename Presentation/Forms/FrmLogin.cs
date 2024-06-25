@@ -36,21 +36,24 @@ namespace FitnessTracker.Desktop
             if (IsLoginAttemptExceedHandle()) return;
             UserIdentity.Instance.Init(result.Data);
             CheckUserProfile(result.Data);
-            ShowDashBoard();
+            ShowDashBoard(result.Data);
         }
 
-        private void ShowDashBoard()
+        private void ShowDashBoard(UserDetail user)
         {
-            var dashBorad = App.MyServiceProvider.GetService<FrmUserDashBorad>();
-            CommonUtil.ShowForm(dashBorad);
-            dashBorad.Activate();
+            var role = user.Role.RoleName;
+            if (role.Equals("Admin", StringComparison.OrdinalIgnoreCase))
+                CommonUtil.ShowForm(App.MyServiceProvider.GetService<FrmAdminDashBoard>());
+            else
+                CommonUtil.ShowForm(App.MyServiceProvider.GetService<FrmAdminDashBoard>());
+
             this.Hide();
         }
 
         private void CheckUserProfile(UserDetail userDetail)
         {
             var profile = userDetail.Profile;
-            if (profile is null)
+            if (profile is null && userDetail.Role.RoleName.Equals("User"))
             {
                 CommonUtil.ShowDialogForm(App.MyServiceProvider.GetService<FrmUserProfile>());
             }
@@ -70,5 +73,12 @@ namespace FitnessTracker.Desktop
         private void btnLogin_Click(object sender, EventArgs e) => TryLogin();
 
         private void lblDontHaveAcount_Click(object sender, EventArgs e) => CommonUtil.ShowDialogForm(App.MyServiceProvider.GetService<FrmUserRegister>());
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            var frm = App.MyServiceProvider.GetService<FrmUserRegister>();
+            frm.FormMode = "Admin";
+            CommonUtil.ShowDialogForm(frm);
+        }
     }
 }

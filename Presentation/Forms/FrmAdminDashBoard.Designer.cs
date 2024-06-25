@@ -35,15 +35,17 @@
             this.tabAccounts = new System.Windows.Forms.TabPage();
             this.tabActivity = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtMetric3 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtMetric2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtMetric1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvActivity = new System.Windows.Forms.DataGridView();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -110,6 +112,7 @@
             this.tabMainPage.SelectedIndex = 0;
             this.tabMainPage.Size = new System.Drawing.Size(800, 389);
             this.tabMainPage.TabIndex = 0;
+            this.tabMainPage.SelectedIndexChanged += new System.EventHandler(this.tabMainPage_SelectedIndexChanged);
             // 
             // tabAccounts
             // 
@@ -140,14 +143,16 @@
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.btnDelete);
+            this.splitContainer2.Panel1.Controls.Add(this.btnCancel);
             this.splitContainer2.Panel1.Controls.Add(this.btnSave);
-            this.splitContainer2.Panel1.Controls.Add(this.textBox4);
+            this.splitContainer2.Panel1.Controls.Add(this.txtMetric3);
             this.splitContainer2.Panel1.Controls.Add(this.label4);
-            this.splitContainer2.Panel1.Controls.Add(this.textBox3);
+            this.splitContainer2.Panel1.Controls.Add(this.txtMetric2);
             this.splitContainer2.Panel1.Controls.Add(this.label3);
-            this.splitContainer2.Panel1.Controls.Add(this.textBox2);
+            this.splitContainer2.Panel1.Controls.Add(this.txtMetric1);
             this.splitContainer2.Panel1.Controls.Add(this.label2);
-            this.splitContainer2.Panel1.Controls.Add(this.textBox1);
+            this.splitContainer2.Panel1.Controls.Add(this.txtName);
             this.splitContainer2.Panel1.Controls.Add(this.label1);
             // 
             // splitContainer2.Panel2
@@ -157,67 +162,71 @@
             this.splitContainer2.SplitterDistance = 262;
             this.splitContainer2.TabIndex = 0;
             // 
-            // textBox4
+            // txtMetric3
             // 
-            this.textBox4.Location = new System.Drawing.Point(60, 170);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(121, 20);
-            this.textBox4.TabIndex = 18;
+            this.txtMetric3.Location = new System.Drawing.Point(22, 207);
+            this.txtMetric3.Name = "txtMetric3";
+            this.txtMetric3.Size = new System.Drawing.Size(143, 20);
+            this.txtMetric3.TabIndex = 18;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(57, 154);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(19, 191);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 13);
+            this.label4.Size = new System.Drawing.Size(49, 13);
             this.label4.TabIndex = 17;
             this.label4.Text = "Metric3";
             // 
-            // textBox3
+            // txtMetric2
             // 
-            this.textBox3.Location = new System.Drawing.Point(60, 131);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(121, 20);
-            this.textBox3.TabIndex = 16;
+            this.txtMetric2.Location = new System.Drawing.Point(22, 153);
+            this.txtMetric2.Name = "txtMetric2";
+            this.txtMetric2.Size = new System.Drawing.Size(143, 20);
+            this.txtMetric2.TabIndex = 16;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(57, 115);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(19, 137);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 13);
+            this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 15;
             this.label3.Text = "Metric2";
             // 
-            // textBox2
+            // txtMetric1
             // 
-            this.textBox2.Location = new System.Drawing.Point(60, 92);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(121, 20);
-            this.textBox2.TabIndex = 14;
+            this.txtMetric1.Location = new System.Drawing.Point(22, 105);
+            this.txtMetric1.Name = "txtMetric1";
+            this.txtMetric1.Size = new System.Drawing.Size(143, 20);
+            this.txtMetric1.TabIndex = 14;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(57, 76);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(19, 89);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 13);
+            this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 13;
             this.label2.Text = "Metric1";
             // 
-            // textBox1
+            // txtName
             // 
-            this.textBox1.Location = new System.Drawing.Point(60, 53);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(121, 20);
-            this.textBox1.TabIndex = 12;
+            this.txtName.Location = new System.Drawing.Point(22, 52);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(143, 20);
+            this.txtName.TabIndex = 12;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(57, 37);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(19, 35);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 13);
+            this.label1.Size = new System.Drawing.Size(85, 13);
             this.label1.TabIndex = 11;
             this.label1.Text = "Activity Name";
             // 
@@ -232,19 +241,48 @@
             this.dgvActivity.ReadOnly = true;
             this.dgvActivity.Size = new System.Drawing.Size(520, 357);
             this.dgvActivity.TabIndex = 0;
+            this.dgvActivity.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvActivity_CellClick);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.Transparent;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.btnDelete.Image = global::FitnessTracker.Desktop.Properties.Resources.icons8_delete_24;
+            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDelete.Location = new System.Drawing.Point(138, 289);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(110, 33);
+            this.btnDelete.TabIndex = 21;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.btnCancel.Image = global::FitnessTracker.Desktop.Properties.Resources.icons8_cancel_24;
+            this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancel.Location = new System.Drawing.Point(22, 250);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(110, 33);
+            this.btnCancel.TabIndex = 20;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.Transparent;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.btnSave.Image = global::FitnessTracker.Desktop.Properties.Resources.login_x32;
+            this.btnSave.Image = global::FitnessTracker.Desktop.Properties.Resources.icons8_login_24;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(127, 208);
+            this.btnSave.Location = new System.Drawing.Point(138, 250);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(112, 38);
+            this.btnSave.Size = new System.Drawing.Size(110, 33);
             this.btnSave.TabIndex = 19;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // FrmAdminDashBoard
             // 
@@ -280,15 +318,17 @@
         private System.Windows.Forms.TabPage tabAccounts;
         private System.Windows.Forms.TabPage tabActivity;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtMetric3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtMetric2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtMetric1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvActivity;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

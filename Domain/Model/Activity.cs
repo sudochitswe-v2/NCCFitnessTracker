@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FitnessTracker.Desktop.Domain.Model
 {
-    public class Activity
+    public class Activity : BaseModel
     {
         public Guid ID { get; set; }
         public string Name { get; set; }

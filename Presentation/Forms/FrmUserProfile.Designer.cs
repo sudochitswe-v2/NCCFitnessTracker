@@ -161,7 +161,7 @@
             // 
             this.btnSave.BackColor = System.Drawing.Color.Transparent;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.btnSave.Image = global::FitnessTracker.Desktop.Properties.Resources.login_x32;
+            this.btnSave.Image = global::FitnessTracker.Desktop.Properties.Resources.icons8_save_24;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSave.Location = new System.Drawing.Point(137, 278);
             this.btnSave.Name = "btnSave";
