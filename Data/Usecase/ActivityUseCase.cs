@@ -44,6 +44,16 @@ namespace FitnessTracker.Desktop.Data.Usecase
             }
             return result;
         }
+        public Result<dynamic> DeleteActitiy(Activity activity)
+        {
+            var result = _activityRepository.DeleteActvity(activity);
+            return new Result<dynamic>
+            {
+                Data = result,
+                Message = result > 0 ? AppMessage.DELETE_SUCCESS : AppMessage.ERROR_WHILE_DELETING,
+                Success = result > 0
+            };
+        }
         public IEnumerable<Activity> GetAllActivities()
         {
             return _activityRepository.GetAllActivities();

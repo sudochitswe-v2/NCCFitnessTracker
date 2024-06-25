@@ -132,6 +132,17 @@ namespace FitnessTracker.Desktop.Presentation.Forms
             txtMetric2?.Clear();
             txtMetric3?.Clear();
         }
+        private void DeleteActivity()
+        {
+            var result = _activityUseCase.DeleteActitiy(Edit());
+            if (result.Success)
+            {
+                CustomMessageBoxUtil.Information(result.Message);
+                LoadActivities();
+            }
+            else
+                CustomMessageBoxUtil.Error(result.Message);
+        }
         private void FrmAdminDashBoard_Load(object sender, EventArgs e) => LoadForm();
 
         private void dgvActivity_CellClick(object sender, DataGridViewCellEventArgs e) => HandleCellClick();
@@ -141,5 +152,7 @@ namespace FitnessTracker.Desktop.Presentation.Forms
         private void btnSave_Click(object sender, EventArgs e) => SaveActivity();
 
         private void tabMainPage_SelectedIndexChanged(object sender, EventArgs e) => HandleTabChanged();
+
+        private void btnDelete_Click(object sender, EventArgs e) => DeleteActivity();
     }
 }

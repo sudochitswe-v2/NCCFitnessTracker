@@ -17,6 +17,8 @@ namespace FitnessTracker.Desktop
             public const string SAVE_SUCCES = "Save success.";
             public const string UPDATE_SUCCES = "Update success.";
             public const string ERROR_WHILE_SAVING = "Error while saving.";
+            public const string DELETE_SUCCESS = "Delete success."; 
+            public const string ERROR_WHILE_DELETING = "Error while deleting.";
             public const string INVALID_USER_ID = "Invalid User ID";
             public const string INVALID_PASSWORD = "Invalid Password";
             public const string FATAL_THREAD_EXCEPTION_MESSAGE = "Fatal exception";
