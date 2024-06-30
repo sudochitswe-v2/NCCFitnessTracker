@@ -14,8 +14,8 @@ namespace FitnessTracker.Desktop
         }
         public static class GoalStatus
         {
-            public const string COMPLETE = "Complete";
-            public const string INPROGRESS = "InProgess";
+            public const string COMPLETE = "Completed";
+            public const string INPROGRESS = "InProgress";
         }
         public static class AppMessage
         {
@@ -34,6 +34,7 @@ namespace FitnessTracker.Desktop
             public const string REGISTRATION_UNSUCCESS = "Registration doesn't complete.";
             public const string DUPLICATE_EMAIL = "This email is already exist.";
             public const string GOAL_CANT_BE_ZERO = "Target goal must be grater than zero.";
+            public const string CONGRATULATIONS = "Congartulations! you have complete user goal";
         }
         public static class RoleName
         {

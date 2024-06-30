@@ -8,10 +8,7 @@ namespace FitnessTracker.Desktop.Data.Dto
 {
     public class TrackingResultDto
     {
-        //public Guid ID { get; set; }
-        public string Goal { get; set; }
         public string ActivityName { get; set; }
-        public string Status { get; set; }
         public string Metric1 { get; set; }
         public int Metric1Value { get; set; }
         public string Metric2 { get; set; }

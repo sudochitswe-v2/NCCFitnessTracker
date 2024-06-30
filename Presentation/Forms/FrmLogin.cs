@@ -45,7 +45,7 @@ namespace FitnessTracker.Desktop
             if (role.Equals("Admin", StringComparison.OrdinalIgnoreCase))
                 CommonUtil.ShowForm(App.MyServiceProvider.GetService<FrmAdminDashBoard>());
             else
-                CommonUtil.ShowForm(App.MyServiceProvider.GetService<FrmUserDashBorad>());
+                CommonUtil.ShowForm(App.MyServiceProvider.GetService<FrmUserHome>());
 
             this.Hide();
         }
@@ -79,6 +79,15 @@ namespace FitnessTracker.Desktop
             var frm = App.MyServiceProvider.GetService<FrmUserRegister>();
             frm.FormMode = "Admin";
             CommonUtil.ShowDialogForm(frm);
+        }
+
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+            txtEmail.Focus();
+#if DEBUG
+            txtEmail.Text = "user1@cs.com";
+            txtPassword.Text = "Aa1234567";
+#endif
         }
     }
 }

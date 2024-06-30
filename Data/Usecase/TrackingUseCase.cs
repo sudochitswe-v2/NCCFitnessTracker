@@ -21,9 +21,9 @@ namespace FitnessTracker.Desktop.Data.Usecase
         {
             return _trackingRepository.GetUserGoals(userId);
         }
-        public IEnumerable<TrackingResultDto> GetTrackingData(Guid userId)
+        public IEnumerable<TrackingResultDto> GetTrackingData(Guid userId, Guid goalId)
         {
-            return _trackingRepository.GetGoalTrackingResults(userId);
+            return _trackingRepository.GetGoalTrackingResults(userId, goalId);
         }
         public Result<int> UpdateGoalStatus(Guid id, string status)
         {

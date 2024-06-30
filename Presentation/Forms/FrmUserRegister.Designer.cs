@@ -38,11 +38,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.btnRegister = new System.Windows.Forms.Button();
+            this.lblPwInfo = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblPwInfo);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtConfirmPassword);
             this.groupBox1.Controls.Add(this.label4);
@@ -143,6 +145,14 @@
             this.btnRegister.UseVisualStyleBackColor = false;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
+            // lblPwInfo
+            // 
+            this.lblPwInfo.AutoSize = true;
+            this.lblPwInfo.Location = new System.Drawing.Point(25, 220);
+            this.lblPwInfo.Name = "lblPwInfo";
+            this.lblPwInfo.Size = new System.Drawing.Size(0, 13);
+            this.lblPwInfo.TabIndex = 10;
+            // 
             // FrmUserRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -171,5 +181,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtConfirmPassword;
         private System.Windows.Forms.Button btnRegister;
+        private System.Windows.Forms.Label lblPwInfo;
     }
 }

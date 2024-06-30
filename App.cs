@@ -83,7 +83,8 @@ namespace FitnessTracker.Desktop
                      // add forms
                      services.AddTransient<FrmLogin>();
                      services.AddTransient<FrmAdminDashBoard>();
-                     services.AddTransient<FrmUserDashBorad>();
+                     services.AddTransient<FrmUserHome>();
+                     services.AddTransient<FrmUserGoalActivities>();
                      services.AddTransient<FrmUserRegister>();
                      services.AddTransient<FrmUserProfile>();
                  });

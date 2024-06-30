@@ -65,10 +65,9 @@ namespace FitnessTracker.Desktop.Data.Repository
             var sql = $@"INSERT INTO tb_ActivityTracking ({columns}) VALUES ({values});";
             return _dbClient.Execute(sql, parameters);
         }
-        public IEnumerable<TrackingResultDto> GetGoalTrackingResults(Guid userId)
+        public IEnumerable<TrackingResultDto> GetGoalTrackingResults(Guid userId, Guid goalId)
         {
             var sql = @"SELECT 
-                       	G.Name as Goal,
 	                    A.Name as ActivityName,
 	                    A.Metric1,
 	                    ATT.Metric1Value,
@@ -77,16 +76,16 @@ namespace FitnessTracker.Desktop.Data.Repository
 	                    A.Metric2,
 	                    A.Metric3,
 	                    G.TargetCalories,
-	                    ATT.BurnedCalories,
-	                    G.Status
+	                    ATT.BurnedCalories
                         FROM
                         tb_ActivityTracking ATT
                         INNER JOIN tb_Goal G ON G.ID = ATT.GoalID
                         INNER JOIN tb_Activity A ON A.ID = ATT.ActivityID
-                        WHERE G.UserID=@UserID";
+                        WHERE G.UserID=@UserID AND G.ID=@GoalID";
             var parameters = new List<SqlParameter>()
             {
-                new SqlParameter("@UserID",userId)
+                new SqlParameter("@UserID",userId),
+                new SqlParameter("@GoalID",goalId),
             };
             var result = _dbClient.Query<TrackingResultDto>(sql, parameters);
             return result;

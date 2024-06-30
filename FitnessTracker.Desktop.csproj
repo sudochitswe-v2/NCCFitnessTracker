@@ -184,6 +184,18 @@
     <Compile Include="Presentation\Forms\FrmAdminDashBoard.Designer.cs">
       <DependentUpon>FrmAdminDashBoard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\Forms\FrmUserGoalActivities.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\FrmUserGoalActivities.Designer.cs">
+      <DependentUpon>FrmUserGoalActivities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\FrmUserHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\FrmUserHome.Designer.cs">
+      <DependentUpon>FrmUserHome.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\Forms\FrmUserProfile.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,12 +211,6 @@
     <Compile Include="Domain\Model\BaseModel.cs" />
     <Compile Include="Domain\Model\Goal.cs" />
     <Compile Include="Domain\Model\User.cs" />
-    <Compile Include="Presentation\Forms\FrmUserDashBorad.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Presentation\Forms\FrmUserDashBorad.Designer.cs">
-      <DependentUpon>FrmUserDashBorad.cs</DependentUpon>
-    </Compile>
     <Compile Include="Presentation\Forms\FrmUserRegister.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -225,8 +231,11 @@
     <EmbeddedResource Include="Presentation\Forms\FrmAdminDashBoard.resx">
       <DependentUpon>FrmAdminDashBoard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentation\Forms\FrmUserDashBorad.resx">
-      <DependentUpon>FrmUserDashBorad.cs</DependentUpon>
+    <EmbeddedResource Include="Presentation\Forms\FrmUserGoalActivities.resx">
+      <DependentUpon>FrmUserGoalActivities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\FrmUserHome.resx">
+      <DependentUpon>FrmUserHome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Forms\FrmUserProfile.resx">
       <DependentUpon>FrmUserProfile.cs</DependentUpon>
