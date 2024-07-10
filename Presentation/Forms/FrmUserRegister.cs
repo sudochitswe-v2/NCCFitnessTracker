@@ -27,18 +27,28 @@ namespace FitnessTracker.Desktop.Forms
             var userRole = _userUseCase.GetRoles().First(role => role.RoleName.Equals(FormMode, StringComparison.OrdinalIgnoreCase));
             roleId = userRole.ID;
         }
+        private bool CheckIsUserNameValid()
+        {
+            Regex regex = new Regex(@"[~`!@#$%^&*()_\-+=\[\]{}|\\;:'"",.<>?/]");
+            if (regex.IsMatch(txtEmail.Text))
+            {
+                CustomMessageBoxUtil.Error("User name can only contain number and letter");
+                return false;
+            }
+            return true;
+        }
         private bool IsDataValid()
         {
             if (string.IsNullOrEmpty(txtUserName.Text))
             {
-                CustomMessageBoxUtil.Error("Please fill User Name");
+                CustomMessageBoxUtil.Error("Please fill Full Name");
                 txtUserName.Focus();
                 return false;
             }
             if (string.IsNullOrEmpty(txtEmail.Text))
             {
                 txtEmail.Focus();
-                CustomMessageBoxUtil.Error("Please fill Email Address");
+                CustomMessageBoxUtil.Error("Please fill User Name");
                 return false;
             }
             if (string.IsNullOrEmpty(txtPassword.Text))
@@ -84,6 +94,7 @@ namespace FitnessTracker.Desktop.Forms
         private void Register()
         {
             if (!IsDataValid()) return;
+            if (!CheckIsUserNameValid()) return;
             var user = new User
             {
                 ID = Guid.NewGuid(),

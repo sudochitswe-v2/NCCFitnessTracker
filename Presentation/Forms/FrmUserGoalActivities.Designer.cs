@@ -33,6 +33,7 @@
             this.gbCalculation = new System.Windows.Forms.GroupBox();
             this.txtMet = new System.Windows.Forms.TextBox();
             this.lblMet = new System.Windows.Forms.Label();
+            this.btnSaveTracking = new System.Windows.Forms.Button();
             this.btnCalculate = new System.Windows.Forms.Button();
             this.txtMetric3 = new System.Windows.Forms.TextBox();
             this.lblMetric3 = new System.Windows.Forms.Label();
@@ -44,13 +45,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.cboActivities = new System.Windows.Forms.ComboBox();
-            this.btnSaveTracking = new System.Windows.Forms.Button();
             this.gpbGoal = new System.Windows.Forms.GroupBox();
+            this.txtTotalBurnedCalories = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblStatusValue = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
             this.txtTargetCalories = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvTrackings = new System.Windows.Forms.DataGridView();
-            this.lblStatus = new System.Windows.Forms.Label();
-            this.lblStatusValue = new System.Windows.Forms.Label();
             this.gbCalculation.SuspendLayout();
             this.gpbGoal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrackings)).BeginInit();
@@ -114,6 +116,21 @@
             this.lblMet.Size = new System.Drawing.Size(30, 13);
             this.lblMet.TabIndex = 34;
             this.lblMet.Text = "MET";
+            // 
+            // btnSaveTracking
+            // 
+            this.btnSaveTracking.BackColor = System.Drawing.Color.Transparent;
+            this.btnSaveTracking.Enabled = false;
+            this.btnSaveTracking.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.btnSaveTracking.Image = global::FitnessTracker.Desktop.Properties.Resources.icons8_save_24;
+            this.btnSaveTracking.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSaveTracking.Location = new System.Drawing.Point(379, 125);
+            this.btnSaveTracking.Name = "btnSaveTracking";
+            this.btnSaveTracking.Size = new System.Drawing.Size(110, 33);
+            this.btnSaveTracking.TabIndex = 30;
+            this.btnSaveTracking.Text = "Save";
+            this.btnSaveTracking.UseVisualStyleBackColor = false;
+            this.btnSaveTracking.Click += new System.EventHandler(this.btnSaveTracking_Click);
             // 
             // btnCalculate
             // 
@@ -212,33 +229,56 @@
             this.cboActivities.TabIndex = 24;
             this.cboActivities.SelectedIndexChanged += new System.EventHandler(this.cboActivities_SelectedIndexChanged);
             // 
-            // btnSaveTracking
-            // 
-            this.btnSaveTracking.BackColor = System.Drawing.Color.Transparent;
-            this.btnSaveTracking.Enabled = false;
-            this.btnSaveTracking.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.btnSaveTracking.Image = global::FitnessTracker.Desktop.Properties.Resources.icons8_save_24;
-            this.btnSaveTracking.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSaveTracking.Location = new System.Drawing.Point(379, 125);
-            this.btnSaveTracking.Name = "btnSaveTracking";
-            this.btnSaveTracking.Size = new System.Drawing.Size(110, 33);
-            this.btnSaveTracking.TabIndex = 30;
-            this.btnSaveTracking.Text = "Save";
-            this.btnSaveTracking.UseVisualStyleBackColor = false;
-            this.btnSaveTracking.Click += new System.EventHandler(this.btnSaveTracking_Click);
-            // 
             // gpbGoal
             // 
+            this.gpbGoal.Controls.Add(this.txtTotalBurnedCalories);
+            this.gpbGoal.Controls.Add(this.label2);
             this.gpbGoal.Controls.Add(this.lblStatusValue);
             this.gpbGoal.Controls.Add(this.lblStatus);
             this.gpbGoal.Controls.Add(this.txtTargetCalories);
             this.gpbGoal.Controls.Add(this.label1);
             this.gpbGoal.Location = new System.Drawing.Point(39, 18);
             this.gpbGoal.Name = "gpbGoal";
-            this.gpbGoal.Size = new System.Drawing.Size(459, 80);
+            this.gpbGoal.Size = new System.Drawing.Size(649, 80);
             this.gpbGoal.TabIndex = 32;
             this.gpbGoal.TabStop = false;
             this.gpbGoal.Text = "Goal";
+            // 
+            // txtTotalBurnedCalories
+            // 
+            this.txtTotalBurnedCalories.Location = new System.Drawing.Point(523, 32);
+            this.txtTotalBurnedCalories.Name = "txtTotalBurnedCalories";
+            this.txtTotalBurnedCalories.ReadOnly = true;
+            this.txtTotalBurnedCalories.Size = new System.Drawing.Size(120, 20);
+            this.txtTotalBurnedCalories.TabIndex = 35;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(411, 35);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(108, 13);
+            this.label2.TabIndex = 34;
+            this.label2.Text = "Total Burned Calories";
+            // 
+            // lblStatusValue
+            // 
+            this.lblStatusValue.AutoSize = true;
+            this.lblStatusValue.Location = new System.Drawing.Point(331, 35);
+            this.lblStatusValue.Name = "lblStatusValue";
+            this.lblStatusValue.Size = new System.Drawing.Size(13, 13);
+            this.lblStatusValue.TabIndex = 33;
+            this.lblStatusValue.Text = " -";
+            this.lblStatusValue.TextChanged += new System.EventHandler(this.lblStatusValue_TextChanged);
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Location = new System.Drawing.Point(244, 35);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(37, 13);
+            this.lblStatus.TabIndex = 32;
+            this.lblStatus.Text = "Status";
             // 
             // txtTargetCalories
             // 
@@ -265,25 +305,6 @@
             this.dgvTrackings.Size = new System.Drawing.Size(649, 150);
             this.dgvTrackings.TabIndex = 33;
             // 
-            // lblStatus
-            // 
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(244, 35);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(78, 13);
-            this.lblStatus.TabIndex = 32;
-            this.lblStatus.Text = "Target Calories";
-            // 
-            // lblStatusValue
-            // 
-            this.lblStatusValue.AutoSize = true;
-            this.lblStatusValue.Location = new System.Drawing.Point(343, 39);
-            this.lblStatusValue.Name = "lblStatusValue";
-            this.lblStatusValue.Size = new System.Drawing.Size(13, 13);
-            this.lblStatusValue.TabIndex = 33;
-            this.lblStatusValue.Text = " -";
-            this.lblStatusValue.TextChanged += new System.EventHandler(this.lblStatusValue_TextChanged);
-            // 
             // FrmUserGoalActivities
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -292,6 +313,7 @@
             this.Controls.Add(this.dgvTrackings);
             this.Controls.Add(this.gpbGoal);
             this.Controls.Add(this.gbCalculation);
+            this.MinimumSize = new System.Drawing.Size(732, 524);
             this.Name = "FrmUserGoalActivities";
             this.Text = "Activities";
             this.Load += new System.EventHandler(this.FrmUserGoalActivities_Load);
@@ -328,5 +350,7 @@
         private System.Windows.Forms.Label lblMetric1;
         private System.Windows.Forms.Label lblStatusValue;
         private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.TextBox txtTotalBurnedCalories;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -1,9 +1,4 @@
-﻿using FitnessTracker.Desktop.Domain.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace FitnessTracker.Desktop.Domain.Model
 {

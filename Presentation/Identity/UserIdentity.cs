@@ -15,17 +15,21 @@ namespace FitnessTracker.Desktop.Identity
         private static readonly UserIdentity _instance = new UserIdentity();
         public Guid Id { get; private set; }
         public string Name { get; private set; }
-        public string Email { get; private set; }
         public string Role { get; private set; }
-        public UserProfile UserProfile { get; private set; }
+        public UserProfile UserProfile { get; set; }
         public void Init(UserDetail user)
         {
             this.Id = user.ID;
             this.Name = user.FullName;
-            this.Email = user.Email;
             this.Role = user.Role.RoleName;
             this.UserProfile = user.Profile;
-            this.UserProfile = user.Profile;
+        }
+        public void Reset()
+        {
+            Id = Guid.Empty;
+            Name = string.Empty;
+            Role = string.Empty;
+            UserProfile = null;
         }
         public static UserIdentity Instance
         {

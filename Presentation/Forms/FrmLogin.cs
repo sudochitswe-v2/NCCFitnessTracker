@@ -9,6 +9,7 @@ using FitnessTracker.Desktop.Identity;
 using FitnessTracker.Desktop.Data.Usecase;
 using FitnessTracker.Desktop.Data.Dto;
 using FitnessTracker.Desktop.Presentation.Forms;
+using System.Text.RegularExpressions;
 
 namespace FitnessTracker.Desktop
 {
@@ -17,6 +18,7 @@ namespace FitnessTracker.Desktop
         private int _failCount = 0;
         private readonly int _failAttemptLimit = 5;
         private readonly UserUseCase _userUseCase;
+       
         public FrmLogin(UserUseCase userUseCase)
         {
             _userUseCase = userUseCase;
@@ -24,9 +26,26 @@ namespace FitnessTracker.Desktop
             this.MinimizeBox = false;
             InitializeComponent();
         }
+        private bool IsValid()
+        {
+            if (string.IsNullOrEmpty(txtUserName.Text))
+            {
+                CustomMessageBoxUtil.Warning("Please enter user name.");
+                txtUserName.Focus();
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtPassword.Text))
+            {
+                CustomMessageBoxUtil.Warning("Please enter password.");
+                txtPassword.Focus();
+                return false;
+            }
+            return true;
+        }
         private void TryLogin()
         {
-            var result = _userUseCase.Login(txtEmail.Text, txtPassword.Text);
+            if (!IsValid()) return;
+            var result = _userUseCase.Login(txtUserName.Text, txtPassword.Text);
             if (!result.Success)
             {
                 _failCount++;
@@ -83,9 +102,9 @@ namespace FitnessTracker.Desktop
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
-            txtEmail.Focus();
+            txtUserName.Focus();
 #if DEBUG
-            txtEmail.Text = "user1@cs.com";
+            txtUserName.Text = "user1";
             txtPassword.Text = "Aa1234567";
 #endif
         }

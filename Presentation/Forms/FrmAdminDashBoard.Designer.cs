@@ -28,47 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabPageDashboard = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.txtWelcome = new System.Windows.Forms.Label();
-            this.tabMainPage = new System.Windows.Forms.TabControl();
-            this.tabAccounts = new System.Windows.Forms.TabPage();
             this.tabActivity = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.txtMetric3 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtMetric2 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtMetric1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.dgvActivity = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtMetric1 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtMetric2 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtMetric3 = new System.Windows.Forms.TextBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.tabAccounts = new System.Windows.Forms.TabPage();
+            this.tabMainPage = new System.Windows.Forms.TabControl();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.tabMainPage.SuspendLayout();
             this.tabActivity.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvActivity)).BeginInit();
+            this.tabMainPage.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // tabPageDashboard
-            // 
-            this.tabPageDashboard.Location = new System.Drawing.Point(4, 22);
-            this.tabPageDashboard.Name = "tabPageDashboard";
-            this.tabPageDashboard.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDashboard.Size = new System.Drawing.Size(792, 363);
-            this.tabPageDashboard.TabIndex = 0;
-            this.tabPageDashboard.Text = "Dashborad";
-            this.tabPageDashboard.UseVisualStyleBackColor = true;
             // 
             // splitContainer1
             // 
@@ -100,29 +89,6 @@
             this.txtWelcome.Size = new System.Drawing.Size(757, 25);
             this.txtWelcome.TabIndex = 2;
             this.txtWelcome.Text = "Welcome Text";
-            // 
-            // tabMainPage
-            // 
-            this.tabMainPage.Controls.Add(this.tabPageDashboard);
-            this.tabMainPage.Controls.Add(this.tabAccounts);
-            this.tabMainPage.Controls.Add(this.tabActivity);
-            this.tabMainPage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabMainPage.Location = new System.Drawing.Point(0, 0);
-            this.tabMainPage.Name = "tabMainPage";
-            this.tabMainPage.SelectedIndex = 0;
-            this.tabMainPage.Size = new System.Drawing.Size(800, 389);
-            this.tabMainPage.TabIndex = 0;
-            this.tabMainPage.SelectedIndexChanged += new System.EventHandler(this.tabMainPage_SelectedIndexChanged);
-            // 
-            // tabAccounts
-            // 
-            this.tabAccounts.Location = new System.Drawing.Point(4, 22);
-            this.tabAccounts.Name = "tabAccounts";
-            this.tabAccounts.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAccounts.Size = new System.Drawing.Size(792, 363);
-            this.tabAccounts.TabIndex = 1;
-            this.tabAccounts.Text = "Accounts";
-            this.tabAccounts.UseVisualStyleBackColor = true;
             // 
             // tabActivity
             // 
@@ -162,33 +128,86 @@
             this.splitContainer2.SplitterDistance = 262;
             this.splitContainer2.TabIndex = 0;
             // 
-            // btnDelete
+            // dgvActivity
             // 
-            this.btnDelete.BackColor = System.Drawing.Color.Transparent;
-            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.btnDelete.Image = global::FitnessTracker.Desktop.Properties.Resources.icons8_delete_24;
-            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDelete.Location = new System.Drawing.Point(138, 289);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(110, 33);
-            this.btnDelete.TabIndex = 21;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = false;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.dgvActivity.AllowUserToAddRows = false;
+            this.dgvActivity.AllowUserToDeleteRows = false;
+            this.dgvActivity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvActivity.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvActivity.Location = new System.Drawing.Point(0, 0);
+            this.dgvActivity.Name = "dgvActivity";
+            this.dgvActivity.ReadOnly = true;
+            this.dgvActivity.Size = new System.Drawing.Size(520, 357);
+            this.dgvActivity.TabIndex = 0;
+            this.dgvActivity.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvActivity_CellClick);
             // 
-            // btnCancel
+            // label1
             // 
-            this.btnCancel.BackColor = System.Drawing.Color.Transparent;
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.btnCancel.Image = global::FitnessTracker.Desktop.Properties.Resources.icons8_cancel_24;
-            this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(22, 250);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(110, 33);
-            this.btnCancel.TabIndex = 20;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(19, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(85, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Activity Name";
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(22, 52);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(143, 20);
+            this.txtName.TabIndex = 12;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(19, 89);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Metric1";
+            // 
+            // txtMetric1
+            // 
+            this.txtMetric1.Location = new System.Drawing.Point(22, 105);
+            this.txtMetric1.Name = "txtMetric1";
+            this.txtMetric1.Size = new System.Drawing.Size(143, 20);
+            this.txtMetric1.TabIndex = 14;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(19, 137);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 13);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Metric2";
+            // 
+            // txtMetric2
+            // 
+            this.txtMetric2.Location = new System.Drawing.Point(22, 153);
+            this.txtMetric2.Name = "txtMetric2";
+            this.txtMetric2.Size = new System.Drawing.Size(143, 20);
+            this.txtMetric2.TabIndex = 16;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(19, 191);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(49, 13);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Metric3";
+            // 
+            // txtMetric3
+            // 
+            this.txtMetric3.Location = new System.Drawing.Point(22, 207);
+            this.txtMetric3.Name = "txtMetric3";
+            this.txtMetric3.Size = new System.Drawing.Size(143, 20);
+            this.txtMetric3.TabIndex = 18;
             // 
             // btnSave
             // 
@@ -204,86 +223,55 @@
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // txtMetric3
+            // btnCancel
             // 
-            this.txtMetric3.Location = new System.Drawing.Point(22, 207);
-            this.txtMetric3.Name = "txtMetric3";
-            this.txtMetric3.Size = new System.Drawing.Size(143, 20);
-            this.txtMetric3.TabIndex = 18;
+            this.btnCancel.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.btnCancel.Image = global::FitnessTracker.Desktop.Properties.Resources.icons8_cancel_24;
+            this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancel.Location = new System.Drawing.Point(22, 250);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(110, 33);
+            this.btnCancel.TabIndex = 20;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // label4
+            // btnDelete
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(19, 191);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 13);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Metric3";
+            this.btnDelete.BackColor = System.Drawing.Color.Transparent;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.btnDelete.Image = global::FitnessTracker.Desktop.Properties.Resources.icons8_delete_24;
+            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDelete.Location = new System.Drawing.Point(138, 289);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(110, 33);
+            this.btnDelete.TabIndex = 21;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // txtMetric2
+            // tabAccounts
             // 
-            this.txtMetric2.Location = new System.Drawing.Point(22, 153);
-            this.txtMetric2.Name = "txtMetric2";
-            this.txtMetric2.Size = new System.Drawing.Size(143, 20);
-            this.txtMetric2.TabIndex = 16;
+            this.tabAccounts.Location = new System.Drawing.Point(4, 22);
+            this.tabAccounts.Name = "tabAccounts";
+            this.tabAccounts.Padding = new System.Windows.Forms.Padding(3);
+            this.tabAccounts.Size = new System.Drawing.Size(792, 363);
+            this.tabAccounts.TabIndex = 1;
+            this.tabAccounts.Text = "Accounts";
+            this.tabAccounts.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // tabMainPage
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(19, 137);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 13);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Metric2";
-            // 
-            // txtMetric1
-            // 
-            this.txtMetric1.Location = new System.Drawing.Point(22, 105);
-            this.txtMetric1.Name = "txtMetric1";
-            this.txtMetric1.Size = new System.Drawing.Size(143, 20);
-            this.txtMetric1.TabIndex = 14;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(19, 89);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "Metric1";
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(22, 52);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(143, 20);
-            this.txtName.TabIndex = 12;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(19, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 13);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Activity Name";
-            // 
-            // dgvActivity
-            // 
-            this.dgvActivity.AllowUserToAddRows = false;
-            this.dgvActivity.AllowUserToDeleteRows = false;
-            this.dgvActivity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvActivity.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvActivity.Location = new System.Drawing.Point(0, 0);
-            this.dgvActivity.Name = "dgvActivity";
-            this.dgvActivity.ReadOnly = true;
-            this.dgvActivity.Size = new System.Drawing.Size(520, 357);
-            this.dgvActivity.TabIndex = 0;
-            this.dgvActivity.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvActivity_CellClick);
+            this.tabMainPage.Controls.Add(this.tabAccounts);
+            this.tabMainPage.Controls.Add(this.tabActivity);
+            this.tabMainPage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabMainPage.Location = new System.Drawing.Point(0, 0);
+            this.tabMainPage.Name = "tabMainPage";
+            this.tabMainPage.SelectedIndex = 0;
+            this.tabMainPage.Size = new System.Drawing.Size(800, 389);
+            this.tabMainPage.TabIndex = 0;
+            this.tabMainPage.SelectedIndexChanged += new System.EventHandler(this.tabMainPage_SelectedIndexChanged);
             // 
             // FrmAdminDashBoard
             // 
@@ -298,7 +286,6 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.tabMainPage.ResumeLayout(false);
             this.tabActivity.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
@@ -306,19 +293,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvActivity)).EndInit();
+            this.tabMainPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TabPage tabPageDashboard;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label txtWelcome;
         private System.Windows.Forms.TabControl tabMainPage;
         private System.Windows.Forms.TabPage tabAccounts;
         private System.Windows.Forms.TabPage tabActivity;
         private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtMetric3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtMetric2;
@@ -328,8 +317,5 @@
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvActivity;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnDelete;
     }
 }

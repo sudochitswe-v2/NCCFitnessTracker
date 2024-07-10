@@ -3,9 +3,6 @@ using FitnessTracker.Desktop.Domain.Model;
 using FitnessTracker.Desktop.Domain.Repository;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting.Services;
-using System.Text;
 using static FitnessTracker.Desktop.Constant;
 
 namespace FitnessTracker.Desktop.Data.Usecase

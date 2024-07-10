@@ -5,13 +5,8 @@ using FitnessTracker.Desktop.Identity;
 using FitnessTracker.Desktop.Util;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Drawing.Text;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static FitnessTracker.Desktop.Constant;
 
@@ -45,6 +40,8 @@ namespace FitnessTracker.Desktop.Presentation.Forms
             var user = UserIdentity.Instance.Id;
             var result = _trackingUseCase.GetTrackingData(user, SelectedGoal.ID);
             dgvTrackings.DataSource = result;
+            var totalBurnedCal = result.Sum(i => i.BurnedCalories);
+            txtTotalBurnedCalories.Text = totalBurnedCal.ToString();
             if (requiredRefresh) dgvTrackings.Refresh();
         }
         private void BindGoalData()
@@ -63,17 +60,50 @@ namespace FitnessTracker.Desktop.Presentation.Forms
         }
         private bool IsValidated()
         {
-            if (string.IsNullOrEmpty(txtMet.Text)) return false;
-            if (string.IsNullOrEmpty(txtUserWeight.Text)) return false;
-            if (string.IsNullOrEmpty(txtMetric1.Text)) return false;
-            if (string.IsNullOrEmpty(txtMetric2.Text)) return false;
-            if (string.IsNullOrEmpty(txtMetric3.Text)) return false;
+            if (string.IsNullOrEmpty(txtMet.Text))
+            {
+                ShowErrorMessage(txtMet, "MET");
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtUserWeight.Text))
+            {
+                ShowErrorMessage(txtUserWeight, "Weight");
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtMetric1.Text))
+            {
+                ShowErrorMessage(txtMetric1, lblMetric1.Text);
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtMetric2.Text))
+            {
+                ShowErrorMessage(txtMetric2, lblMetric2.Text);
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtMetric3.Text))
+            {
+                ShowErrorMessage(txtMetric3, lblMetric3.Text);
+                return false;
+            };
             return true;
+        }
+        private void ShowErrorMessage(TextBox textBox, string name)
+        {
+            textBox.Focus();
+            CustomMessageBoxUtil.Error($"{name} can't be blank");
         }
         private void CalculateBurnedCalories()
         {
             if (!IsValidated()) return;
-            var met = Convert.ToDecimal(txtMet.Text);
+            var met = 0;
+            if (int.TryParse(txtMet.Text, out var result))
+            {
+                met = result;
+            }
+            else if (double.TryParse(txtMet.Text, out double doubleResult))
+            {
+                met = (int)doubleResult;
+            }
             var weight = Convert.ToInt32(txtUserWeight.Text);
             var hours = Convert.ToInt32(txtMetric3.Text);
             var burnedCalories = met * weight * hours;
@@ -115,7 +145,6 @@ namespace FitnessTracker.Desktop.Presentation.Forms
                 CustomMessageBoxUtil.Information(AppMessage.SAVE_SUCCES);
                 LoadGoalActivities(true);
                 ClearTrackingRelateTextBox();
-                RefreshGoalComplete();
             }
             else
             {
@@ -125,12 +154,14 @@ namespace FitnessTracker.Desktop.Presentation.Forms
         private void UpdateGoalStatusIfComplete()
         {
             var goalId = SelectedGoal.ID;
+            var totalBurn = Convert.ToInt32(txtTotalBurnedCalories.Text);
             var burnCal = Convert.ToInt32(txtBurnedCalories.Text);
             var targetCal = Convert.ToInt32(txtTargetCalories.Text);
-            if (burnCal >= targetCal)
+            if (burnCal + totalBurn >= targetCal)
             {
                 CustomMessageBoxUtil.Information(AppMessage.CONGRATULATIONS);
                 _trackingUseCase.UpdateGoalStatus(goalId, GoalStatus.COMPLETE);
+                RefreshGoalComplete();
             }
         }
         private void ClearTrackingRelateTextBox()

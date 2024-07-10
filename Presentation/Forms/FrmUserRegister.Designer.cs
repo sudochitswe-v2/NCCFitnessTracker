@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblPwInfo = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -38,7 +39,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.btnRegister = new System.Windows.Forms.Button();
-            this.lblPwInfo = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,6 +58,14 @@
             this.groupBox1.Size = new System.Drawing.Size(225, 259);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
+            // 
+            // lblPwInfo
+            // 
+            this.lblPwInfo.AutoSize = true;
+            this.lblPwInfo.Location = new System.Drawing.Point(25, 220);
+            this.lblPwInfo.Name = "lblPwInfo";
+            this.lblPwInfo.Size = new System.Drawing.Size(0, 13);
+            this.lblPwInfo.TabIndex = 10;
             // 
             // label5
             // 
@@ -103,9 +111,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(21, 65);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 13);
+            this.label3.Size = new System.Drawing.Size(69, 13);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Email";
+            this.label3.Text = "User Name";
             // 
             // txtEmail
             // 
@@ -120,9 +128,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(21, 16);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 13);
+            this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Name";
+            this.label2.Text = "Full Name";
             // 
             // txtUserName
             // 
@@ -144,14 +152,6 @@
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = false;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
-            // 
-            // lblPwInfo
-            // 
-            this.lblPwInfo.AutoSize = true;
-            this.lblPwInfo.Location = new System.Drawing.Point(25, 220);
-            this.lblPwInfo.Name = "lblPwInfo";
-            this.lblPwInfo.Size = new System.Drawing.Size(0, 13);
-            this.lblPwInfo.TabIndex = 10;
             // 
             // FrmUserRegister
             // 

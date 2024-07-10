@@ -88,8 +88,8 @@ namespace FitnessTracker.Desktop.Presentation.Forms
         }
         private void HandleTabChanged()
         {
-            // Tab index 2 is Activity Tab
-            if (tabMainPage.SelectedIndex == 2)
+            // Tab index 1 is Activity Tab
+            if (tabMainPage.SelectedIndex == 1)
             {
                 LoadActivities();
             }
