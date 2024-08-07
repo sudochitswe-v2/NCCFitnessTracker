@@ -78,6 +78,9 @@ namespace FitnessTracker.Desktop.Presentation.Forms
         {
             var data = CreateProfile();
             var result = _userUseCase.SaveProfile(data);
+            var user = UserIdentity.Instance;
+            var newProfile =_userUseCase.GetUserProfile(user.Id);
+            UserIdentity.Instance.UserProfile = newProfile;
             if (result.Success)
             {
                 CustomMessageBoxUtil.Information(result.Message);
