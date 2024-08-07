@@ -5,8 +5,14 @@ using Microsoft.Extensions.Hosting;
 using FitnessTracker.Desktop.Util;
 using System.Threading;
 using FitnessTracker.Desktop.Forms;
-using FitnessTracker.Desktop.Data.Context.DataSetFitnessTrackerTableAdapters;
 using FitnessTracker.Desktop.Common;
+using FitnessTracker.Desktop.Data.Context;
+using FitnessTracker.Desktop.Data.SqlClient;
+using FitnessTracker.Desktop.Domain.Interface;
+using FitnessTracker.Desktop.Data.Repository;
+using FitnessTracker.Desktop.Data.Usecase;
+using FitnessTracker.Desktop.Presentation.Forms;
+using FitnessTracker.Desktop.Domain.Repository;
 
 namespace FitnessTracker.Desktop
 {
@@ -42,13 +48,32 @@ namespace FitnessTracker.Desktop
 
             Application.Run(LoginFrom);
         }
-
+        private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
+        {
+            try
+            {
+                // handle some hadleable exception
+                var message = $"{Constant.AppMessage.UNHANDLE_WINFORM_EXCEPTION}\n{e.Exception.Message}";
+                CustomMessageBoxUtil.Error(message);
+            }
+            catch (Exception)
+            {
+                try
+                {
+                    CustomMessageBoxUtil.Error(Constant.AppMessage.FATAL_UI_THREAD_EXCEPTION_MESSAGE);
+                }
+                finally
+                {
+                    Application.Exit();
+                }
+            }
+        }
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             try
             {
                 var exceptionFromEvent = (Exception)e.ExceptionObject;
-                var message = $"{Constant.Message.UNHANDLE_THREAD_EXCEPTION}\n{exceptionFromEvent.Message}";
+                var message = $"{Constant.AppMessage.UNHANDLE_THREAD_EXCEPTION}\n{exceptionFromEvent.Message}";
                 CustomMessageBoxUtil.Error(message);
             }
             finally
@@ -58,7 +83,7 @@ namespace FitnessTracker.Desktop
         }
 
         /// <summary>
-        /// This method will inject all WinForms that will use
+        /// This method will inject all WinForms requried class
         /// </summary>
         /// <returns></returns>
         static IHostBuilder CreateHostBuiler()
@@ -66,31 +91,23 @@ namespace FitnessTracker.Desktop
             return Host.CreateDefaultBuilder()
                  .ConfigureServices((context, services) =>
                  {
-                     services.AddSingleton<tb_SystemUserTableAdapter>();
-                     services.AddTransient<FrmLogin>();
-                     services.AddTransient<FrmDashBorad>();
+                     services.AddSingleton<DataContext>();
+                     services.AddSingleton<DbClient>();
+                     services.AddScoped<IUserRepository, UserRepository>();
+                     services.AddScoped<IActivityRepository, ActivityRepository>();
+                     services.AddScoped<ITrackingRepository, TrackingRepository>();
+                     services.AddScoped<UserUseCase>();
+                     services.AddScoped<ActivityUseCase>();
+                     services.AddScoped<TrackingUseCase>();
+                     // add forms
+                     services.AddSingleton<FrmLogin>();
+                     services.AddTransient<FrmAdminDashBoard>();
+                     services.AddTransient<FrmUserHome>();
+                     services.AddTransient<FrmUserGoalActivities>();
                      services.AddTransient<FrmUserRegister>();
+                     services.AddTransient<FrmUserProfile>();
                  });
         }
-        private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
-        {
-            try
-            {
-                // handle some hadleable exception
-                var message = $"{Constant.Message.UNHANDLE_WINFORM_EXCEPTION}\n{e.Exception.Message}";
-                CustomMessageBoxUtil.Error(message);
-            }
-            catch (Exception ex)
-            {
-                try
-                {
-                    CustomMessageBoxUtil.Error(Constant.Message.FATAL_UI_THREAD_EXCEPTION_MESSAGE);
-                }
-                finally
-                {
-                    Application.Exit();
-                }
-            }
-        }
+
     }
 }

@@ -63,9 +63,9 @@ namespace FitnessTracker.Desktop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap exit_x32 {
+        internal static System.Drawing.Bitmap icons8_admin_settings_male_24 {
             get {
-                object obj = ResourceManager.GetObject("exit-x32", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_admin_settings_male_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,59 @@ namespace FitnessTracker.Desktop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap login_x32 {
+        internal static System.Drawing.Bitmap icons8_cancel_24 {
             get {
-                object obj = ResourceManager.GetObject("login-x32", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_cancel_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_delete_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_delete_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_exit_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_exit_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_login_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_login_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_open_door_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_open_door_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_save_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_save_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

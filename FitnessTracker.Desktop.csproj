@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -117,11 +132,15 @@
     <Reference Include="Microsoft.Extensions.Primitives, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Extensions.Primitives.8.0.0\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Diagnostics.DiagnosticSource.8.0.0\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
@@ -160,51 +179,85 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\CommonUtil.cs" />
-    <Compile Include="Common\Constant.cs" />
-    <Compile Include="Data\Context\DataContext.cs" />
-    <Compile Include="Data\Context\DataSetFitnessTracker.cs">
-      <DependentUpon>DataSetFitnessTracker.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Context\DataSetFitnessTracker.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSetFitnessTracker.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Repository\UserRepo.cs" />
-    <Compile Include="Domain\Models\BaseModel.cs" />
-    <Compile Include="Domain\Models\Goal.cs" />
-    <Compile Include="Domain\Models\User.cs" />
-    <Compile Include="Forms\FrmDashBorad.cs">
+    <Compile Include="Data\Dto\Result.cs" />
+    <Compile Include="Data\Dto\TrackingResultDto.cs" />
+    <Compile Include="Data\Dto\UserDetail.cs" />
+    <Compile Include="Data\Repository\ActivityRepository.cs" />
+    <Compile Include="Data\Repository\TrackingRepository.cs" />
+    <Compile Include="Data\Usecase\ActivityUseCase.cs" />
+    <Compile Include="Data\Usecase\TrackingUseCase.cs" />
+    <Compile Include="Domain\Model\ActivityTracking.cs" />
+    <Compile Include="Domain\Repository\IActivityRepository.cs" />
+    <Compile Include="Data\Usecase\UserUseCase.cs" />
+    <Compile Include="Domain\Model\Activity.cs" />
+    <Compile Include="Domain\Model\Role.cs" />
+    <Compile Include="Domain\Model\UserProfile.cs" />
+    <Compile Include="Domain\Repository\ITrackingRepository.cs" />
+    <Compile Include="Presentation\Forms\FrmAdminDashBoard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmDashBorad.Designer.cs">
-      <DependentUpon>FrmDashBorad.cs</DependentUpon>
+    <Compile Include="Presentation\Forms\FrmAdminDashBoard.Designer.cs">
+      <DependentUpon>FrmAdminDashBoard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmUserRegister.cs">
+    <Compile Include="Presentation\Forms\FrmUserGoalActivities.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmUserRegister.Designer.cs">
+    <Compile Include="Presentation\Forms\FrmUserGoalActivities.Designer.cs">
+      <DependentUpon>FrmUserGoalActivities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\FrmUserHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\FrmUserHome.Designer.cs">
+      <DependentUpon>FrmUserHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\FrmUserProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\FrmUserProfile.Designer.cs">
+      <DependentUpon>FrmUserProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\CommonUtil.cs" />
+    <Compile Include="Constant.cs" />
+    <Compile Include="Data\DataContext.cs" />
+    <Compile Include="Data\Repository\UserRepository.cs" />
+    <Compile Include="Data\DbClient.cs" />
+    <Compile Include="Domain\Repository\IUserRepository.cs" />
+    <Compile Include="Domain\Model\BaseModel.cs" />
+    <Compile Include="Domain\Model\Goal.cs" />
+    <Compile Include="Domain\Model\User.cs" />
+    <Compile Include="Presentation\Forms\FrmUserRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\FrmUserRegister.Designer.cs">
       <DependentUpon>FrmUserRegister.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmLogin.cs">
+    <Compile Include="Presentation\Forms\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmLogin.Designer.cs">
+    <Compile Include="Presentation\Forms\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Identity\UserIdentity.cs" />
+    <Compile Include="Presentation\Identity\UserIdentity.cs" />
     <Compile Include="App.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\CustomMessageBoxUtil.cs" />
-    <Compile Include="Util\FormatUtil.cs" />
-    <EmbeddedResource Include="Forms\FrmDashBorad.resx">
-      <DependentUpon>FrmDashBorad.cs</DependentUpon>
+    <EmbeddedResource Include="Presentation\Forms\FrmAdminDashBoard.resx">
+      <DependentUpon>FrmAdminDashBoard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmUserRegister.resx">
+    <EmbeddedResource Include="Presentation\Forms\FrmUserGoalActivities.resx">
+      <DependentUpon>FrmUserGoalActivities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\FrmUserHome.resx">
+      <DependentUpon>FrmUserHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\FrmUserProfile.resx">
+      <DependentUpon>FrmUserProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\FrmUserRegister.resx">
       <DependentUpon>FrmUserRegister.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmLogin.resx">
+    <EmbeddedResource Include="Presentation\Forms\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -217,17 +270,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Data\Context\DataSetFitnessTracker.xsc">
-      <DependentUpon>DataSetFitnessTracker.xsd</DependentUpon>
-    </None>
-    <None Include="Data\Context\DataSetFitnessTracker.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSetFitnessTracker.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Data\Context\DataSetFitnessTracker.xss">
-      <DependentUpon>DataSetFitnessTracker.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -242,9 +284,41 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <None Include="Resources\login-x32.png" />
+    <None Include="Resources\icons8-delete-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-admin-settings-male-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-save-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-open-door-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-exit-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-login-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-cancel-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
